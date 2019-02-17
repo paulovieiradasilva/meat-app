@@ -1,0 +1,8 @@
+<div class="form-group has-feedback" [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
+
+  <ng-content></ng-content>
+
+  <span *ngIf="hasSuccess()" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span *ngIf="hasError()" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  <span style="font-size: 10px;" *ngIf="hasError()" class="help-block">{{ errorMessage }}</span>
+</div>
