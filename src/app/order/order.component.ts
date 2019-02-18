@@ -10,6 +10,8 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 })
 export class OrderComponent implements OnInit {
 
+  delivery: number = 8;
+
   paymentOptions: RadioOption[] = [
     { label: 'Dinheior', value: 'MON' },
     { label: 'Cartão de Débito', value: 'DEB' },
@@ -35,6 +37,10 @@ export class OrderComponent implements OnInit {
 
   remove(item: CartItem) {
     this.orderService.remove(item);
+  }
+
+  itemsVelue(): number {
+    return this.orderService.itemsVelue();
   }
 
 }
