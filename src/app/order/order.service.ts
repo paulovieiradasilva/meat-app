@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { Order, OrderItem } from './order.model';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { MEAT_API } from '../../app.api';
-import { ErrorHandler } from '../app.error-handler';
 
 @Injectable()
 export class OrderService {
@@ -40,7 +39,8 @@ export class OrderService {
         headers.append('Content-Type', 'application/json');
 
         return this.http.post(`${MEAT_API}/orders`, JSON.stringify(order), new RequestOptions({ headers: headers }))
-            .map(response => response.json()).catch(ErrorHandler.hasError)
+            .map(response => response.json())
+            .map(order => order.id);
     }
 
     clear() {
