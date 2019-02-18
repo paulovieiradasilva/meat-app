@@ -10,9 +10,9 @@ export class OrderItemsComponent implements OnInit {
 
   @Input() items: CartItem[];
 
-  @Output() increase = new EventEmitter<CartItem>();
-  @Output() decrease = new EventEmitter<CartItem>();
-  @Output() remove = new EventEmitter<CartItem>();
+  @Output() increaseItem = new EventEmitter<CartItem>();
+  @Output() decreaseItem = new EventEmitter<CartItem>();
+  @Output() removeItem = new EventEmitter<CartItem>();
 
   constructor() { }
 
@@ -20,15 +20,15 @@ export class OrderItemsComponent implements OnInit {
   }
 
   emitIncrease(item: CartItem) {
-    this.increase.emit(item);
+    this.increaseItem.emit(item);
   }
 
   emitDecrease(item: CartItem) {
-    this.decrease.emit(item);
+    this.decreaseItem.emit(item);
   }
 
   emitRemove(item: CartItem) {
-    this.remove.emit(item);
+    this.removeItem.emit(item);
   }
 
 }
