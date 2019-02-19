@@ -4,7 +4,7 @@ import { OrderService } from './order.service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'mt-order',
@@ -35,7 +35,16 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optional: this.formBuilder.control('', []),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    });
+    }, { validator: OrderComponent.equalsTo });
+  }
+
+  // tslint:disable-next-line:member-ordering
+  static equalsTo(group: AbstractControl): { [key: string]: boolean } {
+    const email = group.get('email');
+    const emailConfirmation = group.get('emailConfirmation');
+
+    // tslint:disable-next-line:no-unused-expression
+    return (!email || !emailConfirmation) ? undefined : (email.value !== emailConfirmation.value) ? { emailsNotMatch: true } : undefined;
   }
 
   cartItems(): CartItem[] {
