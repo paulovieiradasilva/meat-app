@@ -3,7 +3,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
 
 import { ROUTES } from './app.routes';
 
@@ -38,8 +37,7 @@ import { OrderSummaryComponent } from './order/order-summary/order-summary.compo
     BrowserModule,
     HttpModule,
     RouterModule,
-    SharedModule,
-    CoreModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
