@@ -17,9 +17,6 @@ import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.component';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
-import { OrderComponent } from './order/order.component';
-import { OrderItemsComponent } from './order/order-items/order-items.component';
-import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
 
 import { RestaurantsService } from './restaurants/restaurants.service';
@@ -40,10 +37,7 @@ import { OrderService } from './order/order.service';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderComponent,
-    OrderItemsComponent,
-    DeliveryCostsComponent,
-    OrderSummaryComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
