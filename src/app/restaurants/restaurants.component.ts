@@ -6,6 +6,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/from';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'mt-restaurants',
@@ -39,7 +42,8 @@ export class RestaurantsComponent implements OnInit {
     this.searchControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap((search) => this.restaurantService.restaurants(search))
+      .switchMap((search) => this.restaurantService.restaurants(search)
+        .catch(error => Observable.from([])))
       .subscribe(restaurants => this.restaurants = restaurants);
 
     this.restaurantService.restaurants().subscribe(restaurants => this.restaurants = restaurants);
