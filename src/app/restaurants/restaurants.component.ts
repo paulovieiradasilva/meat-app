@@ -47,6 +47,8 @@ export class RestaurantsComponent implements OnInit {
       .subscribe(restaurants => this.restaurants = restaurants);
 
     this.restaurantService.restaurants().subscribe(restaurants => this.restaurants = restaurants);
+    console.log(this.restaurants);
+
   }
 
   toogleSearch() {
