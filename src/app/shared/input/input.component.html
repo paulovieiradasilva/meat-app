@@ -2,7 +2,8 @@
 
   <ng-content></ng-content>
 
-  <span *ngIf="hasSuccess()" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-  <span *ngIf="hasError()" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  <span *ngIf="showTip && hasSuccess()" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span *ngIf="showTip && hasError()" class="glyphicon glyphicon-remove form-control-feedback"
+    aria-hidden="true"></span>
   <span style="font-size: 10px;" *ngIf="hasError()" class="help-block">{{ errorMessage }}</span>
 </div>
