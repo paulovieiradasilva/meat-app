@@ -3,6 +3,7 @@ import { Express } from 'express';
 import * as fs from 'fs';
 import * as https from 'https';
 import { authenticate } from './authenticate';
+import { authorizate } from "./authorizate";
 
 const server = jsonServer.create();
 const router = jsonServer.router("../db.json");
@@ -16,6 +17,8 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.post('/login', authenticate);
+
+server.use('/orders', authorizate);
 
 // Use default router
 server.use(router);
