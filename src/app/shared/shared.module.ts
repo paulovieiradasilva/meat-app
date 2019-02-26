@@ -13,17 +13,39 @@ import { OrderService } from "../order/order.service";
 import { NotificationService } from "./messages/notification.service";
 import { LoginService } from "../security/login/login.service";
 import { LoggedInGuard } from "../security/loggedin.guard";
+import { LeaveOrderGuard } from "../order/leave-order.guard";
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  declarations: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent],
-  exports: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent, CommonModule, FormsModule, ReactiveFormsModule]
+  declarations: [
+    InputComponent,
+    RadioComponent,
+    RatingComponent,
+    SnackbarComponent
+  ],
+  exports: [
+    InputComponent,
+    RadioComponent,
+    RatingComponent,
+    SnackbarComponent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [ShoppingCartService, RestaurantsService, OrderService, NotificationService, LoginService, LoggedInGuard]
+      providers: [
+        ShoppingCartService,
+        RestaurantsService,
+        OrderService,
+        NotificationService,
+        LoginService,
+        LoggedInGuard,
+        LeaveOrderGuard
+      ]
     };
   }
 }
