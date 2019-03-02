@@ -7,10 +7,11 @@ import { Router } from "@angular/router";
 import {
   FormGroup,
   FormBuilder,
+  FormControl,
   Validators,
   AbstractControl
 } from "@angular/forms";
-import "rxjs/add/operator/do";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: "mt-order",
@@ -38,12 +39,11 @@ export class OrderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group(
+    this.orderForm = new FormGroup(
       {
-        name: this.formBuilder.control("", [
-          Validators.required,
-          Validators.minLength(5)
-        ]),
+        name: new FormControl("", {
+          validators: [Validators.required, Validators.minLength(5)]
+        }),
         email: this.formBuilder.control("", [
           Validators.required,
           Validators.pattern(this.emailPattern)
@@ -63,7 +63,7 @@ export class OrderComponent implements OnInit {
         optional: this.formBuilder.control("", []),
         paymentOption: this.formBuilder.control("", [Validators.required])
       },
-      { validator: OrderComponent.equalsTo }
+      { validators: [OrderComponent.equalsTo], updateOn: "blur" }
     );
   }
 
@@ -110,9 +110,11 @@ export class OrderComponent implements OnInit {
     );
     this.orderService
       .checkOrder(order)
-      .do((id: string) => {
-        this.orderId = id;
-      })
+      .pipe(
+        tap((id: string) => {
+          this.orderId = id;
+        })
+      )
       .subscribe((orderId: string) => {
         this.router.navigate(["/order-summary"]);
         this.orderService.clear();

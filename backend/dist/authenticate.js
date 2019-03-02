@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var users_1 = require("./users");
 var jwt = require("jsonwebtoken");
 var api_config_1 = require("./api-config");
@@ -21,3 +21,4 @@ function isValid(user) {
     var dbUser = users_1.users[user.email];
     return dbUser !== undefined && dbUser.matches(user);
 }
+//# sourceMappingURL=authenticate.js.map

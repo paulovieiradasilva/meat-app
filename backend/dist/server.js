@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var jsonServer = require("json-server");
 var fs = require("fs");
 var https = require("https");
@@ -21,6 +21,7 @@ var options = {
     cert: fs.readFileSync('./keys/cert.pem'),
     key: fs.readFileSync('./keys/key.pem')
 };
-https.createServer(options, server).listen(3002, function () {
-    console.log("JSON Server is running on https://localhost:3002");
+https.createServer(options, server).listen(3001, function () {
+    console.log("JSON Server is running on https://localhost:3001");
 });
+//# sourceMappingURL=server.js.map

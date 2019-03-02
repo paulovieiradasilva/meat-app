@@ -1,5 +1,6 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.API_CONFIG = {
     secret: 'secrety-key-app'
 };
+//# sourceMappingURL=api-config.js.map

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var jwt = require("jsonwebtoken");
 var api_config_1 = require("./api-config");
 exports.authorizate = function (req, resp, next) {
@@ -29,3 +29,4 @@ function extractToken(req) {
     }
     return token;
 }
+//# sourceMappingURL=authorizate.js.map
